@@ -1,67 +1,58 @@
 /* jshint node: true */
 'use strict';
 
-var plugins = require('gulp-load-plugins')({lazy: true});
 var handyman = require('pipeline-handyman');
 var Server = require('karma').Server;
-var lazypipe = require('lazypipe');
 
 // Karma configuration overrides
+
 var config = {
-  opts: {
-    srcDir: 'src',
-    reportsDir: './reports/coverage',
-    files: ['./test/index.spec.js']
+  enableReporting: true,
+  debug: false,
+  karmaOpts: {
+    files: [
+      './test/index.spec.js'
+    ]
   },
   tdd: {},
-  debug: {
-    browsers: ['Chrome']
-  },
   ci: {
     singleRun: true,
-    junitReporter: {
-      outputFile: 'test-results.xml'
-    }
-  },
-  server: {
-    host: 'localhost',
-    port: 9002,
-    fallback: 'index.html'
   }
 };
 
 module.exports = karmaFunctions;
 
-
 function karmaFunctions(userConfig) {
+  var karmaCommonConf = require('./karma.conf.js')();
 
   if (userConfig) {
     config = handyman.updateConf(config, userConfig);
   }
 
-  var karmaCommonConf = require('./karma.conf.js')(config.opts);
+  if (!config.enableReporting) {
+    config.karmaOpts.reporters = [];
+  }
+
+  if (config.debug) {
+    config.karmaOpts.browsers = ['Chrome'];
+  }
+
+  karmaCommonConf = handyman.updateConf(karmaCommonConf, config.karmaOpts);
 
   var pipeline = {
     testCI: testCI,
-    testTDD: testTDD,
-    testDebug: testDebug
+    testTDD: testTDD
   };
   return pipeline;
 
-  function testCI () {
+  function testCI (done) {
     var karmaConfig = handyman.updateConf(karmaCommonConf, config.ci);
-    var server = new Server(karmaConfig);
+    var server = new Server(karmaConfig, done);
     server.start();
   }
 
-  function testTDD() {
-    var server = new Server(karmaCommonConf);
-    server.start();
-  }
-
-  function testDebug() {
-    var karmaConfig = handyman.updateConf(karmaCommonConf, config.debug);
-    var server = new Server(karmaConfig);
+  function testTDD(done) {
+    var server = new Server(karmaCommonConf, done);
     server.start();
   }
 }

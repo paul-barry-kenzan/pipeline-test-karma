@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-module.exports = function (config) {
+module.exports = function (config) { // jshint ignore:line
   return {
     basePath: '',
 
@@ -10,7 +10,7 @@ module.exports = function (config) {
     frameworks: ['mocha', 'chai', 'chai-sinon'],
 
     // list of files / patterns to load in the browser
-    files: {},
+    files: [],
 
     // list of files to exclude
     exclude: [],
@@ -20,7 +20,7 @@ module.exports = function (config) {
     reporters: ['mocha', 'coverage'],
 
     coverageReporter: {
-      dir: config.reportsDir,
+      dir: './reports',
       reporters: [
         {type: 'html', subdir: 'report-html'},
         {type: 'lcov', subdir: 'report-lcov'},
