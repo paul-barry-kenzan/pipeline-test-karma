@@ -31,9 +31,26 @@ gulp.task('default', function() {
 
 ## Options
 
-
+  ```javascript
+  config = {
+    enableReporting: true,
+    debug: false,
+    karmaOpts: {
+      files: [
+        './test/index.spec.js'
+      ]
+    },
+    tdd: {},
+    ci: {
+      singleRun: true,
+    }
+  }
+  ```
 ## Results
 
+  A object with two methods:
+    testCI:
+    testTDD:
 
 ## LICENSE
 
