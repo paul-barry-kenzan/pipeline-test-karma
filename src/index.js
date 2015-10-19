@@ -10,9 +10,7 @@ var lazypipe = require('lazypipe');
 var config = {
   opts: {
     srcDir: 'src',
-    reportsDir: './reports/coverage'
-  },
-  default: {
+    reportsDir: './reports/coverage',
     files: ['./test/index.spec.js']
   },
   tdd: {},
@@ -40,15 +38,13 @@ function karmaFunctions(userConfig) {
   if (userConfig) {
     config = handyman.updateConf(config, userConfig);
   }
-  //
-  var karmaCommonConf = handyman.updateConf(require('./karma.conf.js')(config.opts),
-  config.default);
+
+  var karmaCommonConf = require('./karma.conf.js')(config.opts);
 
   var pipeline = {
     testCI: testCI,
     testTDD: testTDD,
     testDebug: testDebug
-    // testCoverage: testCoverage
   };
   return pipeline;
 
@@ -68,10 +64,4 @@ function karmaFunctions(userConfig) {
     var server = new Server(karmaConfig);
     server.start();
   }
-
-  // function testCoverage() {
-  //
-  //     return lazypipe()
-  //
-  // }
 }

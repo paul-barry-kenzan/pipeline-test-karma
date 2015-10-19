@@ -12,12 +12,7 @@ var plugins = require('gulp-load-plugins')({lazy: true});
 var config = {
   files: [
    'src/**/*.js'
- ],
- server: {
-   host: 'localhost',
-   port: 9002,
-   fallback: 'index.html'
- }
+ ]
 };
 
 gulp.task('default', function() {
@@ -26,18 +21,4 @@ gulp.task('default', function() {
   // testPipeline.testTDD();
   testPipeline.testDebug();
 
-  return gulp
-    .src('./reports/coverage/report-html')
-    .pipe(plugins.webserver, {
-      host: config.server.host,
-      port: config.server.port,
-      fallback: config.server.fallback,
-      open: true
-    });
 });
-
-
-
-function done() {
-  console.log("DOne testing");
-}
