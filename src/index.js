@@ -4,8 +4,6 @@
 var handyman = require('pipeline-handyman');
 var Server = require('karma').Server;
 
-// Karma configuration overrides
-
 var config = {
   enableReporting: true,
   debug: false,
@@ -52,7 +50,8 @@ function karmaFunctions(userConfig) {
   }
 
   function testTDD(done) {
-    var server = new Server(karmaCommonConf, done);
+    var karmaConfig = handyman.updateConf(karmaCommonConf, config.tdd);
+    var server = new Server(karmaConfig, done);
     server.start();
   }
 }

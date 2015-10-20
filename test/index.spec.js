@@ -1,11 +1,12 @@
 'use strict';
 
-describe('pipeline-test-node', function() {
+// var testKarma = require('../');
+// var should = require('chai').should();
 
-  describe('Module exportation', function() {
-    it('should be true', function () {
-      assert(true);
-    });
-  });
+// describe('pipeline-test-karma', function() {
+//
+//   describe('Run tests', function() {
 
-});
+//   });
+
+// });
