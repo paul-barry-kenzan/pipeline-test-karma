@@ -9,7 +9,6 @@ var config = {
   debug: false,
   karmaOpts: {
     files: [
-      './test/index.spec.js'
     ]
   },
   tdd: {},

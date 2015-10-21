@@ -1,12 +1,32 @@
 'use strict';
+var testPipeline = require('../');
+var expect = require('chai').expect;
+var del = require('del');
+var gulp = require('gulp');
+var fs = require('fs');
+var config = {
+  karmaOpts: {
+    files: [
+      './test/fixtures/test-spec.js'
+    ]
+  }
+}
+describe('Test Results Generations', function() {
 
-// var testKarma = require('../');
-// var should = require('chai').should();
+  it('should test that a reports folder was generated', function (done) {
+    del.sync(['./reports']);
+    testPipeline(config).testCI(validateReports);
 
-// describe('pipeline-test-karma', function() {
-//
-//   describe('Run tests', function() {
+    function validateReports(){
+      fs.access(process.cwd() + '/reports/', function(err) {
+        if (err === null) {
+          expect(true).to.be.true;
+          done();
+        } else {
+          console.log('Error');
+        }
+      });
+    }
+  });
 
-//   });
-
-// });
+});
