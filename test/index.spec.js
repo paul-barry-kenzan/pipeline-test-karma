@@ -23,7 +23,25 @@ describe('Test Results Generations', function() {
           expect(true).to.be.true;
           done();
         } else {
-          console.log('Error');
+          console.log('Error: Reports should have been generated.');
+        }
+      });
+    }
+  });
+
+  it('should test that a reports folder is not generated when reporting is false', function (done) {
+    config.enableReporting = false;
+    del.sync(['./reports']);
+    testPipeline(config).testCI(validateReports);
+
+    function validateReports(){
+      fs.access(process.cwd() + '/reports/', function(err) {
+        if (err === null) {
+          console.log('Error: Reports should not have been generated.');
+        } else {
+
+          expect(true).to.be.true;
+          done();
         }
       });
     }
