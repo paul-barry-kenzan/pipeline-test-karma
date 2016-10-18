@@ -9,7 +9,7 @@ var testnode = require('pipeline-test-node');
 
 var config = {
   files: [
-    'src/**/*.js',
+    'src/**/*.js'
   ]
 };
 
