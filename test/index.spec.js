@@ -1,5 +1,6 @@
 'use strict';
-var testPipeline = require('./src/index.js');
+console.log();  // eslint-disable-line
+var testPipeline = require('../src/index.js');
 var expect = require('chai').expect;
 var del = require('del');
 var gulp = require('gulp'); // eslint-disable-line no-unused-vars

@@ -8,10 +8,11 @@ module.exports = function (config) { // eslint-disable-line no-unused-vars
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai', 'chai-sinon'],
+    frameworks: ['mocha', 'chai', 'chai-sinon', 'commonjs'],
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+    ],
 
     // list of files to exclude
     exclude: [],
@@ -30,7 +31,8 @@ module.exports = function (config) { // eslint-disable-line no-unused-vars
     },
 
     preprocessors: {
-      'src/**/!spec.js': 'coverage'
+      'src/**/!spec.js': 'coverage',
+      'test/**/*spec.js': 'commonjs'
     },
 
     // ngHtml2JsPreprocessor: {
@@ -61,6 +63,7 @@ module.exports = function (config) { // eslint-disable-line no-unused-vars
 
     // To be safe we need to include the plugins, if someone has karma installed globally
     // it will mess up the autoloading of plugins.
+
     plugins: [
       'karma-mocha',
       'karma-chai-sinon',
@@ -68,7 +71,8 @@ module.exports = function (config) { // eslint-disable-line no-unused-vars
       'karma-phantomjs-launcher',
       'karma-mocha-reporter',
       'karma-coverage',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-commonjs'
     ]
   };
 };
