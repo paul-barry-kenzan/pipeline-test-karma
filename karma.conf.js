@@ -1,12 +1,10 @@
 // Karma configuration
 // Generated on Fri Oct 16 2015 12:53:17 GMT-0400 (EDT)
-
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
-
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter

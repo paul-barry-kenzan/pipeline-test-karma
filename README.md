@@ -10,12 +10,12 @@
 
 Gulp Pipeline that uses Karma to run tests.
 
-_repo_: `ssh://git@github.com:kenzanmedia/pipeline-test-karma.git`
+_repo_: `ssh://git@github.com:kenzanlabs/pipeline-test-karma.git`
 
 _jenkins_: `https://kenzan.ci.cloudbees.com/job/CI-pipelines-test-karma/`
 
 ## Install
-`npm install git+ssh://git@github.com/kenzanmedia/pipeline-test-karma.git`
+`npm install pipeline-test-karma`
 
 ## Usage
 ```javascript

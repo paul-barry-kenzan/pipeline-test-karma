@@ -1,5 +1,5 @@
-/* jshint node: true*/
-
+/* jshint node: true */
+/* eslint-disable */
 'use strict';
 
 var handyman = require('pipeline-handyman');
@@ -9,9 +9,6 @@ var config = {
   enableReporting: true,
   debug: false,
   karmaOpts: {
-    files: [
-      'test/index.spec.js'
-    ]
   },
   tdd: {},
   ci: {
@@ -57,5 +54,4 @@ function karmaFunctions(userConfig) {
 
     server.start();
   }
-
 }
