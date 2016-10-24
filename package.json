@@ -65,6 +65,7 @@
   "devDependencies": {
     "commonjs": "0.0.1",
     "del": "2.0.2",
+    "karma-chai": "^0.1.0",
     "karma-commonjs": "1.0.0",
     "karma-requirejs": "0.2.2",
     "pipeline-handyman": "1.0.0",

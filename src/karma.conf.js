@@ -12,6 +12,7 @@
 
       // list of files / patterns to load in the browser
       files: [
+        {pattern: 'node_modules/chai/lib/chai.js', included: false}
       ],
 
       // list of files to exclude
