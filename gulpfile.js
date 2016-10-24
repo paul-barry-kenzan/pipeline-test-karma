@@ -3,13 +3,15 @@
 'use strict';
 
 var gulp = require('gulp');
-var testPipeline = require('./src/index.js')('./gulp');
+var mocha = require('gulp-mocha');
+var testPipeline = require('./src/index.js');
 var validatePipeline = require('pipeline-validate-js');
 var testnode = require('pipeline-test-node');
 
 var config = {
   files: [
     'src/**/*.js',
+    'test/**/*.spec.js'
   ]
 };
 
@@ -26,4 +28,11 @@ gulp.task('test:ci', ['validate:js'], function() {
 
 gulp.task('test:tdd', ['validate:js'], function() {
   testPipeline.testTDD();
+});
+
+gulp.task('test:pipeline', ['validate:js'], function () {
+
+  gulp.src(config.files)
+    .pipe(mocha());
+
 });

@@ -8,12 +8,10 @@
 
       // frameworks to use
       // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-      frameworks: ['mocha', 'commonjs', 'chai-sinon', 'chai'],
+      frameworks: ['mocha'],
 
       // list of files / patterns to load in the browser
-      files: [
-        {pattern: 'node_modules/chai/lib/chai.js', included: false}
-      ],
+      files: [],
 
       // list of files to exclude
       exclude: [],
@@ -35,20 +33,6 @@
         ]
       },
 
-      preprocessors: {
-        'src/**/!spec.js': ['coverage'],
-        '**/*.js': ['commonjs'],
-        'test/**/*spec.js': ['commonjs']
-      },
-
-      // ngHtml2JsPreprocessor: {
-      //   // when adding files to the template cache we need to use an absolute path
-      //   // path from the srcDir, that's the url our directives will expect
-      //   cacheIdFromPath: function(filepath) {
-      //     return filepath.slice(config.srcDir.length);
-      //   }
-      // },
-
       // web server port
       port: 9875,
 
@@ -65,20 +49,8 @@
 
       // start these browsers
       // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-      browsers: ['PhantomJS'],
+      browsers: ['PhantomJS']
 
-      // To be safe we need to include the plugins, if someone has karma installed globally
-      // it will mess up the autoloading of plugins.
-      plugins: [
-        'karma-mocha',
-        'karma-chai-sinon',
-        'karma-chai-plugins',
-        'karma-phantomjs-launcher',
-        'karma-mocha-reporter',
-        'karma-coverage',
-        'karma-chrome-launcher',
-        'karma-commonjs'
-      ]
     };
   };
 }

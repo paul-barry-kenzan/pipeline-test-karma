@@ -16,7 +16,7 @@ var config = {
   }
 };
 
-module.exports = karmaFunctions;
+module.exports = karmaFunctions();
 
 function karmaFunctions(userConfig) {
   var karmaCommonConf = require('./karma.conf.js')();
